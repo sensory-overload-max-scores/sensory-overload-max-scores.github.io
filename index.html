@@ -1,200 +1,146 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Sensory Overload(game) Calculator</title>
+    <title>Sensory Overload Score Calculator</title>
+    <!-- This line links your two files together -->
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div class="container">
-        <h1>calculator for sensory overload scores (probably worse version)</h1>
+        <h1>Sensory Overload Score Calculator</h1>
 
         <div class="main-content">
-            <div class="input-section">
-                <h3>Enter Below :</h3>
-
+            <!-- Inputs -->
+            <div class="input-section card">
+                <h3>Enter Stats Below</h3>
                 <div class="input-group">
-                    <label for="obstacles">Obstacles</label>
+                    <label for="obstacles">Obstacles Passed</label>
                     <input type="number" id="obstacles" placeholder="0" />
                 </div>
-
                 <div class="input-group">
-                    <label for="rings">Rings</label>
+                    <label for="rings">Rings Collected</label>
                     <input type="number" id="rings" placeholder="0" />
                 </div>
-
                 <div class="input-group">
-                    <label for="score">Score(for Acc.)</label>
+                    <label for="score">Current Score (for Acc.)</label>
                     <input type="number" id="score" placeholder="0" />
                 </div>
             </div>
 
-            <div class="results-section">
+            <!-- Results -->
+            <div class="results-section card">
                 <h3>Results</h3>
                 <div class="result-item">
-                    <label>Max Score</label>
+                    <label>Max Potential Score</label>
                     <div class="result-value" id="maxScore">0</div>
                 </div>
                 <div class="result-item">
-                    <label>Accuracy(%)</label>
-                    <div class="result-value" id="accuracy">0</div>
+                    <label>Accuracy (%)</label>
+                    <div class="result-value" id="accuracy">0.00</div>
                 </div>
             </div>
 
-            <div class="rank-section">
-                <h3>Rank :</h3>
+            <!-- Rank -->
+            <div class="rank-section card">
+                <h3>Rank</h3>
                 <div class="rank-display" id="rank">F</div>
             </div>
         </div>
 
-        <div class="guide-section">
-            <h2>Guide :</h2>
-            <p>Enter bellow means enter the numbers bellow what else would it mean</p>
-            <p>Results is the results :)</p>
-            <p>Rank is your rank based on accuracy inspired by osu! same ones as in osu! too</p>
+        <!-- Reference Tables -->
+        <div class="max-scores-section">
+            <h2>Level Max Scores Reference</h2>
 
-            <div class="guide-footer">
-                <div class="credits">
-                    <h3>Credits to :</h3>
-                    <p>pax.the.man</p>
-                    <p>fezem_7073</p>
-                    <p>melon_vr</p>
-                    <p>m8racz</p>
-                </div>
+            <div class="difficulty-group">
+                <h3 class="difficulty-title tornado">Tornado Levels</h3>
+                <table class="scores-table">
+                    <thead>
+                        <tr>
+                            <th>Level</th>
+                            <th>Max Score</th>
+                            <th>Obstacles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Gathering Winds</td><td>235,000</td><td>102</td></tr>
+                        <tr><td>Cold Front</td><td>195,000</td><td>86</td></tr>
+                        <tr><td>Aurora</td><td>170,000</td><td>76</td></tr>
+                        <tr><td>Tropical Storm</td><td>210,000</td><td>92</td></tr>
+                        <tr><td>Gale</td><td>247,500</td><td>107</td></tr>
+                        <tr><td>Squall</td><td>245,000</td><td>106</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <div class="ranks-list">
-                    <h3>List of ranks :</h3>
-                    <p>F | D | C | B</p>
-                    <p>A | S | SS</p>
-                    <p>Best is SS</p>
-                    <p>Worst is F</p>
-                    <p><span class="cheater">CH is a cheater</span></p>
-                </div>
+            <div class="difficulty-group">
+                <h3 class="difficulty-title inception">Inception Levels</h3>
+                <table class="scores-table">
+                    <thead>
+                        <tr>
+                            <th>Level</th>
+                            <th>Max Score</th>
+                            <th>Obstacles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Drifting Off</td><td>195,000</td><td>86</td></tr>
+                        <tr><td>Entering the Dream</td><td>250,000</td><td>108</td></tr>
+                        <tr><td>Limbo</td><td>390,000</td><td>164</td></tr>
+                        <tr><td>Nightmare</td><td>287,500</td><td>123</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <div class="calculations-section" style="display: none;">
-            <h3>calculations that don't need to be entered the automatic ones basically</h3>
-            <table>
-                <tr>
-                    <th>Ring / Obstacles</th>
-                    <th>Ring Score</th>
-                    <th>Grazing Score</th>
-                </tr>
-                <tr>
-                    <td id="ringRatio">0</td>
-                    <td id="ringScore">0</td>
-                    <td id="grazingScore">0</td>
-                </tr>
-                <tr>
-                    <td id="ringRatio2">0</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
+        <!-- Explanation Area -->
+        <div class="calculation-explanation">
+            <h2>The Calculation Logic</h2>
+            <p class="explanation-preface">How we determine your max score potential:</p>
+            <div class="formula-box">
+                <p class="formula">20,000 + (obstacles - 16) * 2,500</p>
+            </div>
+            <div class="explanation-box">
+                <p><strong>Base:</strong> Reaching 5x multiplier gives 20,000 points.[cite: 2]</p>
+                <p><strong>Scaling:</strong> (x-16) is the count of obstacles passed while at 5x.[cite: 2]</p>
+                <p><strong>Value:</strong> Each of those obstacles is worth 2,500 points.[cite: 2]</p>
+            </div>
         </div>
     </div>
 
     <script>
-        // ========================================
-        // CALCULATOR ENGINE - Edit formulas here
-        // ========================================
+        // Keeping logic here to keep it at 2 files total
         const Calculator = {
-            // Input values
-            obstacles: 0,
-            rings: 0,
-            score: 0,
-
-            // ========================================
-            // EDIT THESE FORMULAS AS NEEDED
-            // ========================================
-
-            // Max Score calculation: =C43+B43
-            // C43 = grazing score, B43 = ring score
-            calculateMaxScore() {
-                const ringScore = this.calculateRingScore();
-                const grazingScore = this.calculateGrazingScore();
-                return ringScore + grazingScore;
-            },
-
-            // Ring Score calculation: =B9*2
-            // B9 = rings value
-            calculateRingScore() {
-                return this.rings * 2;
-            },
-
-            // Grazing Score calculation: =20000+(B7-16)*2500
-            // B7 = obstacles value
-            calculateGrazingScore() {
-                return 20000 + (this.obstacles - 16) * 2500;
-            },
-
-            // Accuracy calculation: =B11/D7*100
-            // B11 = score, D7 = maxScore (rings*2)
-            calculateAccuracy() {
-                const maxScore = this.calculateMaxScore();
-                if (maxScore === 0) return 0;
-                return (this.score / maxScore) * 100;
-            },
-
-            // Rank calculation based on accuracy
-            // =IFS(D9<20; "F"; D9<40; "E"; D9<60; "D"; D9<80; "C"; D9<90; "B"; D9<95; "A"; D9<100; "S"; D9=100; "SS"; D9>100; "CH")
-            calculateRank() {
-                const accuracy = this.calculateAccuracy();
-                if (accuracy > 100) return "CH";
-                if (accuracy === 100) return "SS";
-                if (accuracy < 20) return "F";
-                if (accuracy < 40) return "E";
-                if (accuracy < 60) return "D";
-                if (accuracy < 80) return "C";
-                if (accuracy < 90) return "B";
-                if (accuracy < 95) return "A";
-                return "S";
-            },
-
-            // ========================================
-            // End of editable formulas
-            // ========================================
-
-            // Update all calculations
             calculate() {
-                const maxScore = this.calculateMaxScore();
-                const accuracy = this.calculateAccuracy();
-                const rank = this.calculateRank();
+                const obs = parseFloat(document.getElementById('obstacles').value) || 0;
+                const rings = parseFloat(document.getElementById('rings').value) || 0;
+                const score = parseFloat(document.getElementById('score').value) || 0;
 
-                // Update UI
-                document.getElementById('maxScore').textContent = Math.round(maxScore);
-                document.getElementById('accuracy').textContent = accuracy.toFixed(7);
+                const ringScore = rings * 2;[cite: 3]
+                const grazingScore = Math.max(0, 20000 + (obs - 16) * 2500);[cite: 3]
+                const totalMax = ringScore + grazingScore;[cite: 3]
+
+                let acc = totalMax > 0 ? (score / totalMax) * 100 : 0;[cite: 3]
+
+                let rank = "F";
+                if (acc > 100.1) rank = "CH";
+                else if (acc >= 100) rank = "SS";
+                else if (acc >= 95) rank = "S";
+                else if (acc >= 90) rank = "A";
+                else if (acc >= 80) rank = "B";
+                else if (acc >= 60) rank = "C";
+                else if (acc >= 40) rank = "D";
+                else if (acc > 0) rank = "E";[cite: 3]
+
+                document.getElementById('maxScore').textContent = Math.round(totalMax).toLocaleString();
+                document.getElementById('accuracy').textContent = acc.toFixed(2);
                 document.getElementById('rank').textContent = rank;
-
-                // Update hidden calculations table
-                document.getElementById('ringRatio').textContent = (this.rings / this.obstacles).toFixed(10);
-                document.getElementById('ringScore').textContent = this.calculateRingScore();
-                document.getElementById('grazingScore').textContent = this.calculateGrazingScore();
             }
         };
 
-        // ========================================
-        // EVENT LISTENERS - Update on input change
-        // ========================================
-        document.getElementById('obstacles').addEventListener('input', (e) => {
-            Calculator.obstacles = parseFloat(e.target.value) || 0;
-            Calculator.calculate();
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', () => Calculator.calculate());
         });
-
-        document.getElementById('rings').addEventListener('input', (e) => {
-            Calculator.rings = parseFloat(e.target.value) || 0;
-            Calculator.calculate();
-        });
-
-        document.getElementById('score').addEventListener('input', (e) => {
-            Calculator.score = parseFloat(e.target.value) || 0;
-            Calculator.calculate();
-        });
-
-        // Initial calculation
-        Calculator.calculate();
     </script>
 </body>
 </html>

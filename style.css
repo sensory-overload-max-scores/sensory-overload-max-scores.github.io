@@ -1,0 +1,405 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    font-family: Arial, sans-serif;
+    color: white;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    font-size: 27pt;
+    font-weight: bold;
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: white;
+    font-size: 20pt;
+    font-weight: bold;
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.input-section {
+    flex: 1;
+    background-color: #9fc5e8;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.input-section h3 {
+    color: black;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 10pt;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+}
+
+.results-section {
+    flex: 1;
+    background-color: #3be472;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.results-section h3 {
+    color: black;
+    font-size: 20pt;
+    margin-bottom: 15px;
+}
+
+.result-item {
+    margin-bottom: 15px;
+}
+
+.result-item label {
+    display: block;
+    color: black;
+    font-weight: bold;
+    font-size: 10pt;
+    margin-bottom: 5px;
+}
+
+.result-value {
+    color: black;
+    font-size: 14pt;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.rank-section {
+    flex: 1;
+    background-color: #8e7cc3;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rank-section h3 {
+    color: black;
+    font-size: 25pt;
+    margin-bottom: 10px;
+}
+
+.rank-display {
+    color: black;
+    font-size: 50pt;
+    font-weight: bold;
+}
+
+.guide-section {
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.guide-section h2 {
+    color: white;
+    font-size: 20pt;
+    border: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.guide-section p {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 10pt;
+}
+
+.guide-footer {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+    border-top: 3px solid white;
+    padding-top: 20px;
+}
+
+.credits {
+    flex: 1;
+}
+
+.credits h3 {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 2px solid white;
+    padding-bottom: 10px;
+}
+
+.credits p {
+    color: white;
+    margin-bottom: 5px;
+    font-size: 10pt;
+}
+
+.ranks-list {
+    flex: 1;
+}
+
+.ranks-list h3 {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 2px solid white;
+    padding-bottom: 10px;
+}
+
+.ranks-list p {
+    color: white;
+    margin-bottom: 5px;
+    font-size: 10pt;
+}
+
+.cheater {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.max-scores-section {
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.max-scores-section h2 {
+    margin-bottom: 30px;
+}
+
+.difficulty-group {
+    margin-bottom: 30px;
+}
+
+.difficulty-title {
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    color: black;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.difficulty-title.tornado {
+    background-color: #7fb3d5;
+}
+
+.difficulty-title.inception {
+    background-color: #f4b084;
+}
+
+/* Updated Scores Table Styling */
+.scores-table {
+    width: 100%;
+    border-collapse: separate; /* Changed to separate for better border-radius control */
+    border-spacing: 0;
+    margin-bottom: 20px;
+    background-color: #2a2a2a; /* Slightly lighter than the background for depth */
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #444;
+}
+
+    .scores-table th {
+        background-color: #2a2a2a;
+        color: #ffffff; /* Brighter text for readability */
+        padding: 15px;
+        text-align: left;
+        font-size: 11pt;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 2px solid white;
+    }
+
+    .scores-table td {
+        padding: 12px 15px;
+        font-size: 10.5pt;
+        color: #e0e0e0; /* Off-white for better contrast than the previous grey */
+        border-bottom: 1px solid #444;
+        transition: background-color 0.2s; /* Smooth hover transition */
+    }
+
+    /* Zebra striping for easier reading */
+    .scores-table tbody tr:nth-child(even) {
+        background-color: #434343;
+    }
+
+    /* Hover effect to help track rows */
+    .scores-table tbody tr:hover td {
+        background-color: #2e2e2e;
+        color: #ffffff;
+    }
+
+    .scores-table tr:last-child td {
+        border-bottom: none;
+    }
+
+/* Specific Column Styling */
+.level-name {
+    font-weight: bold;
+    color: #fff;
+}
+
+.score-value {
+    font-family: 'Courier New', monospace; /* Makes numbers look like a game UI */
+    color: #3be472; /* Matches your results section green */
+}
+
+.obstacle-value {
+    font-family: 'Courier New', monospace;
+    color: #9fc5e8; /* Matches your input section blue */
+}
+
+/* Small adjustment to the hidden calculations table to match */
+.calculations-section table {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+}
+
+    .calculations-section table td,
+    .calculations-section table th {
+        color: #e0e0e0;
+        border-bottom: 1px solid #444;
+    }
+
+.calculation-explanation {
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.calculation-explanation h2 {
+    margin-bottom: 20px;
+}
+
+.formula-box {
+    background-color: #b6d7a8;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.formula {
+    color: black;
+    font-size: 18pt;
+    font-weight: bold;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+}
+
+.explanation-box {
+    background-color: #b6d7a8;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.explanation-box p {
+    color: black;
+    margin-bottom: 10px;
+    font-size: 10pt;
+    line-height: 1.6;
+}
+
+.explanation-box p:last-child {
+    margin-bottom: 0;
+}
+
+.calculations-section {
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.calculations-section h3 {
+    color: #888;
+    font-size: 10pt;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #434343;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table th {
+    background-color: #434343;
+    color: #888;
+    padding: 10px;
+    text-align: left;
+    font-size: 10pt;
+    border-bottom: 2px solid white;
+}
+
+table td {
+    background-color: #434343;
+    color: #888;
+    padding: 10px;
+    font-size: 10pt;
+    border-bottom: 1px solid white;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}

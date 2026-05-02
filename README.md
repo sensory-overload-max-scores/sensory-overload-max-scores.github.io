@@ -19,7 +19,7 @@
 | :-------------------: |
 | 20000+(x-16)*2500 |
 | **Explanation** |
-| When reaching 5x the number of points is 20000 |
-| (x-16) is how many obstacles need to be passed for 5x |
-| *2500 is how many points you get for 5x |
+| When reaching 5x multi the number of points is 20000 |
+| (x-16) is how many obstacles need to be passed for 5x multi |
+| *2500 is how many points you get for 5x multi |
 | x is the total number of obstacles in the level |
